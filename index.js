@@ -1,15 +1,15 @@
 // Creating server
 // Dependencies
-const express = require('express')
-const path = require('path')
+const express = require('express');
+const path = require('path');
 
 // set up Express
-const app = express()
-const PORT = 3000
+const app = express();
+const PORT = 3000;
 
-app.listen(port, function() {
-    console.log("Listening at PORT " + port);
-});
+// Sets up the Express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // DATA
 const reservation = [
@@ -61,20 +61,42 @@ const waitlist = [
 ]
 
 // Basic route that sends the user first to the AJAX Page
-app.get("/", function(req, res) {
-    //directs tp the home page
-    app.get("/api/home", function(req, res) {
-    res.sendFile(path.join(__dirname, "home.html"));
-  });
-  
-  //directs to the reservation page
-  app.get("/api/reserve", function(req, res) {
-    res.sendFile(path.join(__dirname, "reserve.html"));
-  });
-  
-  //directs to the tables page
-  app.get("/api/tables", function(req, res) {
-    res.sendFile(path.join(__dirname, "tables.html"));
-  });
 
+//directs tp the home page
+app.get("/api/home", function(req, res) {
+    res.sendFile(path.join(__dirname, "home.html"));
+});
+  
+//directs to the reservation page
+app.get("/api/reserve", function(req, res) {
+    res.sendFile(path.join(__dirname, "reserve.html"));
+});
+  
+//directs to the tables page
+app.get("/api/tables", function(req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"));
+});
+
+
+//adding new reservation to tables page
+app.post("/api/tables", function(req, res) {
+    // req.body hosts is equal to the JSON post sent from the user
+    // This works because of our body parsing middleware
+    var newCharacter = req.body;
+  
+    // Using a RegEx Pattern to remove spaces from newCharacter
+    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+    newCharacter.routeName = newCharacter.name.replace(/\s+/g, "").toLowerCase();
+  
+    console.log(newCharacter);
+  
+    characters.push(newCharacter);
+  
+    res.json(newCharacter);
+});
+
+// Starts the server to begin listening
+// =============================================================
+app.listen(PORT, function() {
+    console.log("Listening at PORT " + PORT);
 });
