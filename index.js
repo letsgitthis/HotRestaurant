@@ -36,7 +36,7 @@ const reservation = [
     
 ]
 
-const table = [
+const waitlist = [
     {
         customerName: 'Link',
         customerEmail: 'link@email.com',
@@ -63,17 +63,17 @@ const table = [
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
     //directs tp the home page
-    app.get("/reserve", function(req, res) {
+    app.get("/api/home", function(req, res) {
     res.sendFile(path.join(__dirname, "home.html"));
   });
   
   //directs to the reservation page
-  app.get("/reserve", function(req, res) {
+  app.get("/api/reserve", function(req, res) {
     res.sendFile(path.join(__dirname, "reserve.html"));
   });
   
   //directs to the tables page
-  app.get("/tables", function(req, res) {
+  app.get("/api/tables", function(req, res) {
     res.sendFile(path.join(__dirname, "tables.html"));
   });
 
