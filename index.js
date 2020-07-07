@@ -13,14 +13,16 @@ const waiting = []
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
+    //directs tp the home page
     res.sendFile(path.join(__dirname, "home.html"));
   });
   
+  //directs to the reservation page
   app.get("/reserve", function(req, res) {
     res.sendFile(path.join(__dirname, "reserve.html"));
   });
   
-  // Displays all characters
+  //directs to the tables page
   app.get("/tables", function(req, res) {
     res.sendFile(path.join(__dirname, "tables.html"));
   });
