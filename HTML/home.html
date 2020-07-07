@@ -3,17 +3,71 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../CSS/home.css">
-    <title>HotRestaurant</title>
+    <title>Hot Restaurant - Home</title>
+    <!-- materialize css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+
 </head>
 
-<!-- body -->
 <body>
-    
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="text-center"><span class="fa fa-fire"></span>Hot Restaurant</h1>
+            <h3>We only have 5 tables! Book your seat before they all are gone!</h3>
+            <hr>
+            <a href="/add"><button class="btn btn-lg btn-primary"><span class="fa fa-list-alt"></span> View
+                    Tables</button></a>
+            <a href="/api/characters"><button class="btn btn-danger btn-lg"><span class="fa fa-credit-card"></span> Make
+                    Reservation</button></a>
+        </div>
+    </div>
+
+    <!-- jquery script -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- materialize script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- home function script below -->
+    <script type="text/javascript">
+        $(".submit").on("click", function(event) {
+            event.preventDefault();
+            var newReservation = {
+                customerName: $("#reserve-name").val().trim(),
+                phoneNumber: $("#reserve-phone").val().trim(),
+                customerEmail: $("#reserve-email").val().trim(),
+                customerID: $("#reserve-unique-id").val().trim()
+            }
+
+            // Using a RegEx Pattern to remove spaces from searchedCharacter
+            // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+            newReservation = newReservation.replace(/\s+/g, "").toLowerCase();
+
+            $.get("/api/tables/" + newReservation, function (data) {
+                console.log(data);
+                // If a table is available... tell user they are booked.
+                if (data) {
+                    alert("Yay! You are officially booked!");
+                }
+
+                // If a table is available... tell user they on the waiting list.
+                else {
+                    alert("Sorry you are on the wait list");
+                }
+
+                // Clear the form when submitting
+                $("#reserve-name").val("");
+                $("#reserve-phone").val("");
+                $("#reserve-email").val("");
+                $("#reserve-unique-id").val("");
+
+            });
+        });
+
+    </script>
 </body>
 
 <!-- footer -->
-<footer>HotRestaurant | 2020</footer>
+<!-- <footer> Hot Restaurant | 2020 </footer> -->
 
 </html>
