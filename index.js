@@ -36,6 +36,30 @@ const reservation = [
     
 ]
 
+const table = [
+    {
+        customerName: 'Link',
+        customerEmail: 'link@email.com',
+        customerID: '1234',
+        phoneNumber: '123-456-7890',
+
+    },
+    {
+        customerName: 'Zelda',
+        customerEmail: 'zelda@email.com',
+        customerID: '1234',
+        phoneNumber: '123-456-7890',
+
+    },
+    {
+        customerName: 'Ganon',
+        customerEmail: 'ganon@email.com',
+        customerID: '1234',
+        phoneNumber: '123-456-7890',
+    }
+    
+]
+
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
     //directs tp the home page
