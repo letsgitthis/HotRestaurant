@@ -1,11 +1,15 @@
+//Create server
+
 const express = require('express');
 
 const port = 3000;
 const app = express();
 
 app.listen(port, function() {
-    console.log("Server is runnig on " + port +" port")
+    console.log("Listening at PORT " + port);
 });
+
+//Reservation Questions
 
 const reserved = []
 
@@ -29,3 +33,4 @@ app.get("/", function(req, res) {
   });
 
 });
+
