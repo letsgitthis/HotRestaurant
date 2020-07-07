@@ -4,13 +4,24 @@
   "description": "* Description: Basic app demonstrating Node and Express with jQuery. Overall purpose is to help schedule reservation requests. Restaurant has just 5 tables available. First five requests get a reservation, every request after that is sent to the waiting list. * Live Demo: <https://hot-restaurant-fsf.herokuapp.com/>",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gwensanabria/HotResteraunt.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gwensanabria/HotResteraunt/issues"
+  },
+  "homepage": "https://github.com/gwensanabria/HotResteraunt#readme",
   "dependencies": {
     "bulma": "^0.9.0",
-    "inquirer": "^7.3.0"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
   }
 }
