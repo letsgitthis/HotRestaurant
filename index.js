@@ -1,4 +1,4 @@
-
+// Creating server
 // Dependencies
 const express = require('express')
 const path = require('path')
@@ -7,6 +7,9 @@ const path = require('path')
 const app = express()
 const PORT = 3000
 
+app.listen(port, function() {
+    console.log("Listening at PORT " + port);
+});
 
 // DATA
 const reservation = [
@@ -29,16 +32,8 @@ const reservation = [
         customerEmail: 'ganon@email.com',
         customerID: '1234',
         phoneNumber: '123-456-7890',
-=======
-app.listen(port, function() {
-    console.log("Listening at PORT " + port);
-});
-
-//Reservation Questions
-
-const reserved = []
-
     }
+    
 ]
 
 // Basic route that sends the user first to the AJAX Page
@@ -59,9 +54,3 @@ app.get("/", function(req, res) {
   });
 
 });
-
-
-// Server listening
-app.listen(PORT, function() {
-    console.log('App listening on PORT' + port)
-})
